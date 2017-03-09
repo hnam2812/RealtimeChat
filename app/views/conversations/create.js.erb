@@ -6,7 +6,15 @@ if (conversation.length !== 1) {
   conversation = conversations.find("[data-conversation-id='" + "<%= @conversation.id %>" + "']");
 }
 
+//set enter to send from cookies data
+var convId = conversation.data("conversationId");
+var dataEnterToSend = Cookies.get("enterToSend") || "[]";
+dataEnterToSend = JSON.parse(dataEnterToSend);
+var result  = _.find(dataEnterToSend, {convId: convId});
 conversation.find('.panel-body').show();
+
+if(result)
+  conversation.find(".enter-to-send").prop("checked", result.isEnter);
 
 var messages_list = conversation.find('.messages-list');
 var height = messages_list[0].scrollHeight;
