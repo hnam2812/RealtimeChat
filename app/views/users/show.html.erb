@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+  <div class="panel-title">
+    <%= @user.full_name %>
+  </div>
+  <div class="panel-body">
+    <% @user.statuses.each do |status| %>
+      <div class="row"> <%= status.content %></div>
+    <% end %>
+  </div>
+</div>
