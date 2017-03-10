@@ -1,5 +1,5 @@
 $(function() {
-  $(".btn-close").on("click", function(e){
+  $("#conversations-list").on("click", ".btn-close", function(e){
     e.preventDefault();
     $(this).closest("li").remove();
   });
