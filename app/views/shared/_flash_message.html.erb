@@ -1,0 +1,16 @@
+<% if notice %>
+  <div class="alert alert-success col-md-offset-3 col-md-6"><%= notice %>
+    <button type="button" class="close" data-dismiss="alert">&times;</span></button>
+  </div>
+<% elsif alert %>
+  <div class="alert alert-danger col-md-offset-3 col-md-6"><%= alert %>
+    <button type="button" class="close" data-dismiss="alert">&times;</span></button>
+  </div>
+<% else %>
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %> col-md-offset-3 col-md-6">
+      <%= message %>
+      <button type="button" class="close" data-dismiss="alert">&times;</span></button>
+    </div>
+  <% end %>
+<% end %>
