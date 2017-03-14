@@ -19,8 +19,11 @@ gem "coffee-rails", "~> 4.2"
 
 gem "jquery-rails"
 
+gem "carrierwave"
+
 group :development, :test do
   gem "pry-rails"
+  gem "faker"
 end
 
 group :development do

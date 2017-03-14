@@ -1,0 +1,12 @@
+<div class="row text-center">
+  <strong class="relationship-popup" href="#" title="Followers" data-html="true" data-toggle="popover"
+    data-placement="bottom" data-content="<%= relationship_content user, :followers, 5 %>">
+    <span class="followers"><%= user.followers.size %></span> followers
+  </strong>
+</div>
+<div class="row text-center">
+  <strong class="relationship-popup" href="#" title="Following" data-html="true" data-toggle="popover"
+    data-placement="bottom" data-content="<%= relationship_content user, :following, 5 %>">
+    <span class="following"><%= user.following.size %> following</span>
+  </strong>
+</div>

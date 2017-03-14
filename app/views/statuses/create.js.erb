@@ -1,0 +1,4 @@
+var statusesContent = $("#statuses-content");
+statusesContent.prepend("<%= j(render 'statuses/status', status: @status) %>");
+$(".alert-area").append("<%= j(render 'shared/flash_message')%>");
+$("#status_content").val("");

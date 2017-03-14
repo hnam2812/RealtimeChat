@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="row text-center">
+              <%= image_tag @user.avatar, width: 160, height: 160,
+                alt: "#{@user.full_name}'s avatar"  %>
+            </div>
+          <%= render "shared/relationship_info", user: @user %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 pull-right">
+       <%= render "follow_form" if user_signed_in? %>
+      </div>
+    </div>
+    <div class="row" id="statuses-content">
+      <% @user.statuses.each do |status| %>
+        <%= render "statuses/status", status: status %>
+      <% end %>
+    </div>
+  </div>
+</div>
