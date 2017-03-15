@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :statuses, except: [:index, :new]
   resources :comments, except: [:index, :new]
   resources :relationships, only: [:create, :destroy]
+  resources :search, only: [:index]
 end

@@ -5,7 +5,7 @@
     </div>
     <div class="panel-body">
       <%= form_for Status.new, remote: true do |f| -%>
-        <%= f.text_area :content, class: "form-control" %>
+        <%= f.text_area :content, placeholder: "Write a status...", class: "form-control" %>
         <div class="row">
           <div class="col-md-4 pull-right mt-5"><%= f.submit :Post, class: "btn btn-sm btn-info" %></div>
         </div>

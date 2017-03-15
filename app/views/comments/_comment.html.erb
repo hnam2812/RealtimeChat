@@ -1,7 +1,18 @@
-<div class="row mt-15">
+<div class="row mt-15 form-inline">
   <div class="col-md-12 form-inline">
-    <%= image_tag comment.user.avatar, width: 30, height: 30 %>
-    <strong><%= link_to comment.user.full_name, user_path(comment.user) %></strong>
-      <small> <%= comment.content %></small>
+    <div class="col-md-1">
+      <%= image_tag comment.user.avatar, width: 30, height: 30, class: "comment-avatar" %>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <strong><%= link_to comment.user.full_name, user_path(comment.user) %></strong>
+          <small> <%= comment.content %></small>
+      </div>
+
+      <div class="row">
+        <small> <%= link_to time_ago_in_words(comment.created_at), "javascript:void(0)",
+          title: comment.created_at.strftime("%A, %B %d, %Y %H:%M%P") %></small>
+      </div>
+    </div>
   </div>
 </div>

@@ -8,4 +8,6 @@ class Status < ActiveRecord::Base
   validates :content, presence: true, length: { maximum: 2000 }
 
   default_scope -> { order(created_at: :desc) }
+
+  scope :following_status, -> ids {where("statuses.user_id IN (?)", ids)}
 end

@@ -4,10 +4,10 @@ module HomeHelper
     content = ""
     if users != 0
       user.try(relationship).limit(quantity).each do |fl|
-        content << "<p> <a href='#{user_path(fl)}'>#{fl.full_name}</> </p>"
+        content << "<p> <a href='#{user_path(fl)}'>#{fl.full_name}</a> </p>"
       end
     end
-    if quantity != users
+    if quantity < users
       content << "<a href='#' data-toggle='modal'
         data-target='##{relationship}-modal' > ...and #{users - quantity} user </a>"
     end

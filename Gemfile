@@ -21,6 +21,12 @@ gem "jquery-rails"
 
 gem "carrierwave"
 
+gem "ransack"
+
+gem "material_icons"
+
+gem "ransack"
+
 group :development, :test do
   gem "pry-rails"
   gem "faker"

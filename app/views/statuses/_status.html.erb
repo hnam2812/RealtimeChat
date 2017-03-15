@@ -11,20 +11,17 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-md-12">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <%= status.content %>
-          </div>
-        </div>
+        <%= status.content %>
         <hr \>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12 form-inline">
-        <%= form_for Comment.new do |f| -%>
-          <%= image_tag current_user.avatar, width: 30, height: 30 %>
+        <%= form_for Comment.new, remote: true  do |f| -%>
+          <%= image_tag current_user.avatar, width: 30, height: 30, class: "comment-avatar" %>
           <%= f.hidden_field :status_id, value: status.id %>
-          <%= f.text_area :content, rows: 1, class: "form-control comment-content" %>
+          <%= f.text_area :content, rows: 1, placeholder: "Write a comment...",
+            class: "form-control comment-content" %>
         <% end -%>
       </div>
     </div>

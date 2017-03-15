@@ -19,6 +19,18 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   validates :last_name, :first_name, presence: true
 
+  ransacker :last_first do |parent|
+    Arel::Nodes::NamedFunction.new('CONCAT_WS', [
+      Arel::Nodes.build_quoted(' '), parent.table[:last_name], parent.table[:first_name]
+    ])
+  end
+
+  ransacker :first_last do |parent|
+    Arel::Nodes::NamedFunction.new('CONCAT_WS', [
+      Arel::Nodes.build_quoted(' '), parent.table[:first_name], parent.table[:last_name]
+    ])
+  end
+
   def conversations
     Conversation.where("sender_id = ? OR recipient_id = ?", self.id, self.id)
   end

@@ -34,11 +34,16 @@ $(function() {
   setEnterToSend();
 
   $(".comment-content").keypress(function(e) {
-    if(e.which == 13) {
-      e.preventDefault();
-      $(this).closest("form").submit();
+    if(e.which == 13 && !e.shiftKey) {
+      if(_.trim($(this).val()) !== "") {
+        $(this).closest("form").submit();
+      } else {
+        e.preventDefault();
+      }
     }
   });
+
+  $(".comment-content").css("height", "30px").autogrow();
 
   $('[data-toggle="popover"]').popover();
   $(".relationship-popup").popover({ trigger: "manual" , html: true, animation: false})
