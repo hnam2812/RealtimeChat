@@ -1,15 +1,35 @@
-<div class="col-md-12 pull-right">
-  <div class="panel panel-default status-<%= status.id %>">
-    <div class="panel-heading"><%= status.user.full_name %>
+<div class="panel panel-default status-<%= status.id %>">
+  <div class="panel-heading">
+    <strong><%= link_to status.user.full_name, user_path(status.user) %></strong>
     <%= link_to "×", status_path(status), method: :delete, remote: true,
       type: "button", class: "close" %>
-    </div>
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-md-12">
-          <%= status.content %>
+    <br><small>
+      <%= link_to time_ago_in_words(status.created_at), "javascript:void(0)",
+        title: status.created_at.strftime("%A, %B %d, %Y %H:%M%P") %>
+    </small>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <%= status.content %>
+          </div>
         </div>
+        <hr \>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-12 form-inline">
+        <%= form_for Comment.new do |f| -%>
+          <%= image_tag current_user.avatar, width: 30, height: 30 %>
+          <%= f.hidden_field :status_id, value: status.id %>
+          <%= f.text_area :content, rows: 1, class: "form-control comment-content" %>
+        <% end -%>
+      </div>
+    </div>
+    <% status.comments.each do |comment| %>
+      <%= render "comments/comment", comment: comment %>
+    <% end %>
   </div>
 </div>

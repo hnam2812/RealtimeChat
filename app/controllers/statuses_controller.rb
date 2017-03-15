@@ -10,7 +10,6 @@ class StatusesController < ApplicationController
 
   def destroy
     @status = current_user.statuses.find params[:id]
-    binding.pry
     if @status.destroy
       flash[:success] = "Status has been deleted"
     else

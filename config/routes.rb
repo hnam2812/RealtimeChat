@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :conversations, only: [:create]
 
   post "close_conversation" => "conversations#close", as: :close_conversation
-  resources :users, except: [:index, :create]
-  resources :statuses
+  resources :users, only: :show
+  resources :statuses, except: [:index, :new]
+  resources :comments, except: [:index, :new]
+  resources :relationships, only: [:create, :destroy]
 end

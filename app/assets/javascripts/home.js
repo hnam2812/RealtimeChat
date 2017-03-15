@@ -1,5 +1,5 @@
 $(function() {
-  $(".open-chatlog").on("click", function(e){
+  $("#conversations-list").on("click",".open-chatlog", function(e){
     e.preventDefault();
     $(this).next(".panel-body").toggle();
     var messages_list = $(this).next(".panel-body").find(".messages-list");
@@ -32,6 +32,30 @@ $(function() {
 
   //set enter to send from cookies data
   setEnterToSend();
+
+  $(".comment-content").keypress(function(e) {
+    if(e.which == 13) {
+      e.preventDefault();
+      $(this).closest("form").submit();
+    }
+  });
+
+  $('[data-toggle="popover"]').popover();
+  $(".relationship-popup").popover({ trigger: "manual" , html: true, animation: false})
+    .on("mouseenter", function () {
+        var _this = this;
+        $(this).popover("show");
+        $(".popover").on("mouseleave", function () {
+            $(_this).popover('hide');
+        });
+    }).on("mouseleave", function () {
+      var _this = this;
+      setTimeout(function () {
+          if (!$(".popover:hover").length) {
+              $(_this).popover("hide");
+          }
+      }, 50);
+  });
 });
 
 function setEnterToSend() {
@@ -46,5 +70,5 @@ function setEnterToSend() {
     if(result)
       $(this).find(".enter-to-send").prop("checked", result.isEnter);
   });
-
+  conversations.find(".panel-body").hide().last().show();
 };

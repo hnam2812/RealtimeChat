@@ -30,9 +30,14 @@
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
     </div>
+
+    <div class="col-md-5">
+      <%= f.label :avatar %><br />
+      <%= f.file_field :avatar %>
+    </div>
   </div>
   <div class="row mt-15">
-    <div class="col-md-3 col-md-offset-5">
+    <div class="col-md-3">
       <%= f.submit "Sign up", class: "btn btn-primary form-control" %>
     </div>
   </div>
